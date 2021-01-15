@@ -5,7 +5,9 @@
  */
 public class Main {
     public static void main(String[] args) {
+
         MyLinkedList myLinkedList = new MyLinkedList();
+//        myLinkedList.addEnd(1000);
         myLinkedList.addIndex(0,100);
         myLinkedList.addFirst(2);
         myLinkedList.addFirst(3);
@@ -20,7 +22,14 @@ public class Main {
         myLinkedList.addIndex(6,12);
         //中间插
         myLinkedList.addIndex(5,13);
-
+        myLinkedList.remove(0);
+        //删除头结点
+        myLinkedList.remove(11);
+        //删除中间节点
+        myLinkedList.remove(2);
+        //删除尾结点
+        myLinkedList.remove(12);
+        //打印
         myLinkedList.display();
     }
 }

@@ -3,18 +3,9 @@
  * @version 7.0
  * @date 2021/1/14 10:06
  */
-class Node {
-    public int data;
-    public Node next;
-
-    public Node(int data) {
-        this.data = data;
-    }
-}
 public class MyLinkedList {
     //表示链表头结点
     public Node head;
-    public int usedSize;
 
     //头插法
     public void addFirst(int data) {
@@ -33,9 +24,10 @@ public class MyLinkedList {
     public void addEnd(int data) {
         Node node = new Node(data);
         //判断链表是不是第一次插入
-//        Node node1 = this.head;
+        Node node1 = this.head;
 //        if (node1 == null) {
 //            node1 = node;
+//            this.head = node1;
 //            return;
 //        }
         if (this.head == null) {
@@ -52,8 +44,7 @@ public class MyLinkedList {
 
     //插入到某个位置
     public void addIndex(int index ,int data) {
-        if (index < 0 || index > this.getLength()) {
-            System.out.println("插入位置有误!");
+        if (!checkIndex(index)) {
             return;
         }
         //第一个元素 : 头插
@@ -100,16 +91,55 @@ public class MyLinkedList {
 //        }
 
     }
+    //删除第一次出现关键字 key 的结点
+    public void remove(int key) {
+        if (this.head == null) {
+            return;
+        }
+        //前驱节点为 null :
+        // 1. 头结点的前驱结点为 null
+        // 2. 关键字 key 不存在的结点前驱结点为 null
+        if (searchPreNode(key) == null) {
+            //删除头结点
+            if (this.head.data == key) {
+                this.head = this.head.next;
+            } else {
+                System.out.println("不存在该关键字 key = " + key);
+            }
+            return;
+        }
+        //前驱节点不为 null
+        Node pre = searchPreNode(key);
+        pre.next = pre.next.next;
+    }
+    //检查 index 位置是否为插入有效位置
+    public boolean checkIndex(int index) {
+        if (index < 0 || index > this.getLength()) {
+            System.out.println("改单链表目前长度为 : " + this.getLength() + ", 插入位置 index = " + index + "有误!");
+            return false;
+        }
+        return true;
+    }
+    //找关键字 key 对应节点的前驱结点
+    public Node searchPreNode(int key) {
+        Node cur = this.head;
+        while (cur.next != null) {
+            if (cur.next.data == key) {
+                return cur;
+            }
+            cur = cur.next;
+        }
+        return null;
+    }
+
     //找 index 结点的前驱结点
     public Node searchPre(int index) {
-        if (index <= 0 || index > getLength()) {
-            return null;
-        }
         Node cur = this.head;
         for (int i = 0; i < index - 1; i++) {
             cur = cur.next;
         }
         return cur;
+
     }
     //计算单链表长度
     public int getLength() {
