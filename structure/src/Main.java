@@ -30,6 +30,18 @@ public class Main {
         //删除尾结点
         myLinkedList.remove(12);
         //打印
+        myLinkedList.addIndex(4,5);
         myLinkedList.display();
+        System.out.println(myLinkedList.contains(11));
+        System.out.println(myLinkedList.contains(100));
+        System.out.println(myLinkedList.contains(100));
+        myLinkedList.removeAllKey(5);
+        myLinkedList.addIndex(0,3);
+        myLinkedList.removeAllKey(3);
+        myLinkedList.display();
+        myLinkedList.reverseList();
+        myLinkedList.display();
+        myLinkedList.clear();
+        System.out.println("的点点滴滴错");
     }
 }
