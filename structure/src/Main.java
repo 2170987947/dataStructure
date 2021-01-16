@@ -11,7 +11,10 @@ public class Main {
         myLinkedList.addIndex(0,100);
         myLinkedList.addFirst(2);
         myLinkedList.addFirst(3);
-        myLinkedList.partition(13);
+        myLinkedList.addFirst(5);
+        myLinkedList.addFirst(1);
+        myLinkedList.addFirst(10);
+        myLinkedList.partition(3);
         myLinkedList.display();
 //        myLinkedList.addEnd(5);
 //        myLinkedList.addEnd(6);

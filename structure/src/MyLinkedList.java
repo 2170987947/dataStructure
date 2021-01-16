@@ -269,18 +269,51 @@ public class MyLinkedList {
 
     //编写一个代码,将小于 x 的元素放在 x 左边,大于等于 x 的放在右边
     public Node partition(int x) {
+        Node bs = null;
+        Node be = null;
+        Node as = null;
+        Node ae = null;
         Node cur = this.head;
-        Node pre = this.head;
-        while (cur != null && cur.next != null) {
-            if (cur.next.data > x) {
-                addEnd(cur.next.data);
-                cur.next = cur.next.next;
+        while (cur != null) {
+            if (cur.data < x) {
+                //尾插
+                if (bs == null) {
+                    //第一次插入
+                    bs = cur;
+                    be = cur;
+                }else {
+                    be.next = cur;
+                    be = be.next;
+                }
+            }else {
+                //尾插
+                if (as == null) {
+                    // 第一次插入
+                    as = cur;
+                    ae = cur;
+                }else {
+                    ae.next = cur;
+                    ae = ae.next;
+                }
             }
             cur = cur.next;
+        }
+        if (bs == null) {
+            this.head = as;
+        }else if (as == null) {
+            be.next = null;
+            this.head = bs;
+        }else {
+            be.next = as;
+            ae.next = null;
+            this.head = bs;
         }
         return this.head;
     }
 
+    //遍历单链表一次,删除相同的结点
+    // eg: 1 2 2 12 12 17------> 1 17
+    
     //合并两个有序列表
     public Node Merge(Node node1, Node node2) {
 
