@@ -1,3 +1,5 @@
+package Linkedlist;
+
 /**
  * @author FMM
  * @version 7.0
@@ -7,15 +9,38 @@ public class Main {
     public static void main(String[] args) {
 
         MyLinkedList myLinkedList = new MyLinkedList();
-//        myLinkedList.addEnd(1000);
-        myLinkedList.addIndex(0,100);
-        myLinkedList.addFirst(2);
-        myLinkedList.addFirst(3);
-        myLinkedList.addFirst(5);
-        myLinkedList.addFirst(1);
-        myLinkedList.addFirst(10);
-        myLinkedList.partition(3);
+//        myLinkedList.addEnd(17);
+//
+        myLinkedList.addEnd(1);
+        myLinkedList.addEnd(3);
+//
+        myLinkedList.addEnd(4);
+        myLinkedList.addEnd(1);
+//        myLinkedList.addEnd(1);
+//
+//        myLinkedList.addEnd(4);
+//        myLinkedList.addEnd(5);
+//        myLinkedList.addEnd(5);
+//        myLinkedList.addEnd(17);
+//        myLinkedList.addEnd(17);
+//        myLinkedList.addEnd(17);
+//        myLinkedList.addEnd(3);
+//        myLinkedList.clear();
         myLinkedList.display();
+        System.out.println(myLinkedList.middleList().data);
+        boolean b = myLinkedList.isPalindromeSequence();
+        System.out.println(b);
+//        myLinkedList.deleteDuplication();
+//        myLinkedList.display();
+//        myLinkedList.addEnd(1000);
+//        myLinkedList.addIndex(0,100);
+//        myLinkedList.addFirst(2);
+//        myLinkedList.addFirst(3);
+//        myLinkedList.addFirst(5);
+//        myLinkedList.addFirst(1);
+//        myLinkedList.addFirst(10);
+//        myLinkedList.partition(3);
+//        myLinkedList.display();
 //        myLinkedList.addEnd(5);
 //        myLinkedList.addEnd(6);
 //        //-1, 6 是非法插入
@@ -47,7 +72,7 @@ public class Main {
 //        myLinkedList.reverseList();
 //        myLinkedList.display();
 ////        myLinkedList.remove(100);
-//        System.out.println(myLinkedList.middleList());
+        System.out.println(myLinkedList.middleList());
 //        myLinkedList.clear();
 //        System.out.println(myLinkedList.findKthRe(2));
 //        myLinkedList.display();

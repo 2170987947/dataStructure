@@ -1,13 +1,15 @@
+package Linkedlist;
+
 /**
  * @author FMM
  * @version 7.0
  * @date 2021/1/14 10:06
  */
 public class MyLinkedList {
-    //表示链表头结点
+    // 表示链表头结点
     public Node head;
 
-    //头插法
+    // 1. 头插法
     public void addFirst(int data) {
         Node node = new Node(data);
 //        if (this.head == null) {
@@ -21,11 +23,11 @@ public class MyLinkedList {
 //        System.out.println("头插成功");
       }
 
-      //尾插法
+      // 2. 尾插法
     public void addEnd(int data) {
         Node node = new Node(data);
         //判断链表是不是第一次插入
-//        Node node1 = this.head;
+//        Linkedlist.Node node1 = this.head;
 //        if (node1 == null) {
 //            node1 = node;
 //            this.head = node1;
@@ -45,7 +47,7 @@ public class MyLinkedList {
 //        System.out.println("尾插成功");
     }
 
-    //任意位置插入, 第一个数据结点下标为 0
+    // 3. 任意位置插入, 第一个数据结点下标为 0
     public void addIndex(int index ,int data) {
         if (!checkIndex(index)) {
             return;
@@ -72,7 +74,7 @@ public class MyLinkedList {
 //        System.out.println("任意插,插入成功");
 
         //方法二: 不调用函数直接写
-//        Node node = new Node(data);
+//        Linkedlist.Node node = new Linkedlist.Node(data);
 //        if (index == 0) {
 //            node.next = this.head;
 //            this.head = node;
@@ -80,7 +82,7 @@ public class MyLinkedList {
 //            return;
 //        }
 //        //找到插入点前一个元素
-//        Node cur = this.head;
+//        Linkedlist.Node cur = this.head;
 //        int count = 0;
 //        while (count < index - 1 && cur.next != null) {
 //            cur = cur.next;
@@ -101,7 +103,7 @@ public class MyLinkedList {
 //        System.out.println("任意插,插入成功");
     }
 
-    //查找是否包含关键字 key 的结点
+    // 4. 查找是否包含关键字 key 的结点
     public boolean contains(int key) {
         if (this.head == null) {
 //            System.out.println("不存在该关键字 key = " + key);
@@ -123,7 +125,7 @@ public class MyLinkedList {
         return true;
     }
 
-    //删除第一次出现关键字 key 的结点
+    // 5. 删除第一次出现关键字 key 的结点
     public void remove(int key) {
         if (this.head == null) {
             return;
@@ -155,12 +157,12 @@ public class MyLinkedList {
 //            return;
 //        }
 //        //前驱节点不为 null
-//        Node pre = searchPreNode(key);
+//        Linkedlist.Node pre = searchPreNode(key);
 //        pre.next = pre.next.next;
 //        System.out.println("删除成功");
     }
 
-    //删除所有值为 key 的结点
+    // 6. 删除所有值为 key 的结点
     public void removeAllKey(int key) {
         if (this.head == null) {
             return;
@@ -171,7 +173,7 @@ public class MyLinkedList {
 //            this.head = this.head.next;
 //        }
 //        //删除普通结点
-//        Node cur = this.head;
+//        Linkedlist.Node cur = this.head;
 //        while (cur.next != null) {
 //            while (cur.next.data == key) {
 //                cur.next = cur.next.next;
@@ -200,13 +202,13 @@ public class MyLinkedList {
 //                this.head = this.head.next;
 //                return;
 //            }else {
-//                Node pre = searchPreNode(key);
+//                Linkedlist.Node pre = searchPreNode(key);
 //                pre.next = pre.next.next;
 //            }
 //        }
     }
 
-    //反转:  采用头插法
+    // 7. 反转: 采用头插法
     public Node reverseList() {
         if (this.head == null) {
             return null;
@@ -222,7 +224,9 @@ public class MyLinkedList {
         return head;
     }
 
-    //返回中间结点: 只遍历一次单链表
+    // 8. 返回中间结点: 只遍历一次单链表
+    // eg: 1, 2, 3  =====>  2
+    // eg: 1, 2, 3, 4 =====> 3
     public Node middleList() {
         // slow 一次走一步
         Node slow = this.head;
@@ -237,7 +241,7 @@ public class MyLinkedList {
         return slow;
     }
 
-    //输入一个链表,输出该链表中倒数第 K 个结点
+    // 9. 输入一个链表,输出该链表中倒数第 K 个结点
     // 只遍历单链表一次: 即不能求长度
     public Node findKthRe(int k) {
         if (k <= 0) {
@@ -267,7 +271,7 @@ public class MyLinkedList {
 //        return searchPre(this.getLength() - k + 1);
     }
 
-    //编写一个代码,将小于 x 的元素放在 x 左边,大于等于 x 的放在右边
+    // 10. 编写一个代码,将小于 x 的元素放在 x 左边,大于等于 x 的放在右边
     public Node partition(int x) {
         Node bs = null;
         Node be = null;
@@ -311,10 +315,124 @@ public class MyLinkedList {
         return this.head;
     }
 
-    //遍历单链表一次,删除相同的结点
-    // eg: 1 2 2 12 12 17------> 1 17
-    
-    //合并两个有序列表
+    // 11. 遍历单链表一次,删除相同的结点
+    // eg: 1 2 2 2 12 12 17------> 1 17
+    public Node deleteDuplication() {
+        Node newHeadListNode = new Node(0);
+        Node cur = this.head;
+        // 链表中已存在的最后一个节点.
+        Node temp = newHeadListNode;
+        // 方法一
+        while (cur != null) {
+            if (cur.next != null && cur.data == cur.next.data) {
+                while (cur.next != null && cur.data == cur.next.data) {
+                    cur = cur.next;
+                }
+                cur = cur.next;
+            }
+            else {
+                temp.next = cur;
+                temp = cur;
+                cur = cur.next;
+            }
+        }
+        temp.next = null;
+        // 方法二
+//        while (cur != null) {
+//            while (cur.next != null && cur.data == cur.next.data) {
+//                // 相等往后继续
+//                cur = cur.next;
+//
+//                // 相等的元素超过两个
+//                while (cur.next != null && cur.data == cur.next.data) {
+//                    cur = cur.next;
+//                }
+//                // 链表结束并且链表最后的两个元素相同
+//                if (cur.next == null ) {
+//                    temp.next = null;
+//                    this.head = newHeadListNode.next;
+//                    return this.head;
+//                }
+//                cur = cur.next;
+//            }
+//            temp.next = cur;
+//            temp = cur;
+//            cur = cur.next;
+//        }
+        this.head = newHeadListNode.next;
+        return  this.head;
+
+    }
+
+    // 12. 判断链表是否为回文序列
+    public boolean isPalindromeSequence() {
+        if (this.head == null) {
+            return false;
+        }
+        // 方法一
+//        int left = 1;
+//        int right = getLength();
+//        while (left < right && findKthRe(right).data == findKthRe(left).data) {
+//            left++;
+//            right--;
+//        }
+//        if (left == right) {
+//            return true;
+//        }
+//        return false;
+
+        // 方法二
+        // 1. 找中间结点
+        // 2. 中间结点后的节点反转
+        Node middleNode = middleList();
+        // 只有一个元素或两个元素
+        if (middleNode.next == null) {
+            // 只有一个元素
+            if (this.head.next == null) {
+                return true;
+            } else {
+                // 两个元素
+                if (this.head.data == this.head.next.data) {
+                    return true;
+                }
+                return false;
+            }
+        }
+        // 只有三个或四个元素
+        if (middleNode.next.next == null) {
+            // 第一个条件: 无法判断元素为 4 个.
+            // eg: 1 3 1 ===> true
+            // eg: 1 3 4 1 ===> true   -----> 判断不完善
+            // 第二个条件: 完善第一个条件.
+            if (middleNode.next.data == this.head.data && this.head.next.data == middleNode.data) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        Node temp = null;
+        Node slow = middleNode;
+        Node cur = middleNode.next;
+        Node fast = middleNode.next.next;
+        while (fast != null) {
+            cur.next = slow;
+            cur = fast;
+            slow.next = temp;
+            slow = cur;
+            temp = slow;
+            fast = fast.next;
+        }
+        cur.next = slow;
+        Node cur1 = this.head;
+        while (cur != null && cur1 != null) {
+            if (cur.data != cur1.data) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // 13. 合并两个有序列表
     public Node Merge(Node node1, Node node2) {
 
         while (node1 != null && node2 != null) {
@@ -329,7 +447,7 @@ public class MyLinkedList {
         return this.head;
     }
 
-    //检查 index 位置是否为插入有效位置
+    // 14. 检查 index 位置是否为插入有效位置
     public boolean checkIndex(int index) {
         if (index < 0 || index > this.getLength()) {
             System.out.println("该单链表目前长度为 : " + this.getLength() + ", 插入位置 index = " + index + "有误!");
@@ -338,7 +456,7 @@ public class MyLinkedList {
         return true;
     }
 
-    //找关键字 key 对应节点的前驱结点
+    // 15. 找关键字 key 对应节点的前驱结点
     public Node searchPreNode(int key) {
         Node cur = this.head;
         while (cur.next != null) {
@@ -350,7 +468,7 @@ public class MyLinkedList {
         return null;
     }
 
-    //找 index 结点的前驱结点
+    // 16. 找 index 结点的前驱结点
     public Node searchPre(int index) {
         Node cur = this.head;
         for (int i = 0; i < index - 1; i++) {
@@ -360,7 +478,7 @@ public class MyLinkedList {
 
     }
 
-    //计算单链表长度
+    // 17. 计算单链表长度
     public int getLength() {
         if (this.head == null) {
             return 0;
@@ -374,14 +492,18 @@ public class MyLinkedList {
         return count;
     }
 
-    //清空单链表
+    // 18. 清空单链表
     public void clear() {
         this.head = null;
         //内存泄漏
     }
 
-    //打印
+    // 19. 打印
     public void display() {
+        if (this.head == null) {
+            System.out.println("单链表无节点");
+            return;
+        }
         Node cur = this.head;
         while (cur != null) {
             System.out.print(cur.data + " ");
