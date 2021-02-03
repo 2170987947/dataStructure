@@ -11,8 +11,8 @@ public class Main {
         // 增
         System.out.print("新增: ");
 //        myLinkedList.add(0,"1");
-        myLinkedList.add("fmm");
-        myLinkedList.insert(1,"2");
+        myLinkedList.add("fee");
+        myLinkedList.add(1,"2");
 //        myLinkedList.add(2,"ee");
 //        myLinkedList.add(3,"1");
 //        myLinkedList.display();
