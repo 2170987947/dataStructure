@@ -12,7 +12,6 @@ public class Node<E> {
     public Node() {
 
     }
-
     public Node(E data) {
         this.data = data;
     }
