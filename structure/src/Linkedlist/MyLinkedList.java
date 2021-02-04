@@ -182,14 +182,14 @@ public class MyLinkedList {
 //        }
         //方法二: 只遍历一次单链表把所有值为 key 的结点删除
         Node pre = this.head;
-        Node cur1 = this.head.next;
-        while (cur1 != null) {
-            if (cur1.data == key) {
+        Node cur = this.head.next;
+        while (cur != null) {
+            if (cur.data == key) {
                 pre.next = pre.next.next;
-                cur1 = pre.next;
+                cur = pre.next;
             }else {
-                pre = cur1;
-                cur1 = cur1.next;
+                pre = cur;
+                cur = cur.next;
             }
         }
         if (this.head.data == key) {
@@ -383,51 +383,27 @@ public class MyLinkedList {
 
         // 方法二
         // 1. 找中间结点
-        // 2. 中间结点后的节点反转
         Node middleNode = middleList();
-        // 只有一个元素或两个元素
-        if (middleNode.next == null) {
-            // 只有一个元素
-            if (this.head.next == null) {
-                return true;
-            } else {
-                // 两个元素
-                if (this.head.data == this.head.next.data) {
-                    return true;
-                }
+        // 2. 中间结点后的节点反转
+        Node pre = null;
+        Node cur = middleNode;
+        Node next = middleNode.next;
+        Node newHead = null;
+        while (cur != null) {
+            next = cur.next;
+            if (next == null) {
+                newHead = cur;
+            }
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        // 3. 比较相等
+        while (newHead != null) {
+            if (newHead.data != this.head.data) {
                 return false;
             }
-        }
-        // 只有三个或四个元素
-        if (middleNode.next.next == null) {
-            // 第一个条件: 无法判断元素为 4 个.
-            // eg: 1 3 1 ===> true
-            // eg: 1 3 4 1 ===> true   -----> 判断不完善
-            // 第二个条件: 完善第一个条件.
-            if (middleNode.next.data == this.head.data && this.head.next.data == middleNode.data) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        Node temp = null;
-        Node slow = middleNode;
-        Node cur = middleNode.next;
-        Node fast = middleNode.next.next;
-        while (fast != null) {
-            cur.next = slow;
-            cur = fast;
-            slow.next = temp;
-            slow = cur;
-            temp = slow;
-            fast = fast.next;
-        }
-        cur.next = slow;
-        Node cur1 = this.head;
-        while (cur != null && cur1 != null) {
-            if (cur.data != cur1.data) {
-                return false;
-            }
+            newHead = newHead.next;
         }
         return true;
     }

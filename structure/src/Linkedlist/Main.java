@@ -13,9 +13,16 @@ public class Main {
 //
         myLinkedList.addEnd(1);
         myLinkedList.addEnd(3);
-//
         myLinkedList.addEnd(4);
         myLinkedList.addEnd(1);
+        myLinkedList.addEnd(1);
+        myLinkedList.display();
+        System.out.println(myLinkedList.findKthRe(3).data);
+//        myLinkedList.Merge()
+//        myLinkedList.removeAllKey(1);
+//        System.out.println(myLinkedList.isPalindromeSequence());
+//        myLinkedList.display();
+
 //        myLinkedList.addEnd(1);
 //
 //        myLinkedList.addEnd(4);
@@ -26,10 +33,10 @@ public class Main {
 //        myLinkedList.addEnd(17);
 //        myLinkedList.addEnd(3);
 //        myLinkedList.clear();
-        myLinkedList.display();
-        System.out.println(myLinkedList.middleList().data);
-        boolean b = myLinkedList.isPalindromeSequence();
-        System.out.println(b);
+//        myLinkedList.display();
+//        System.out.println(myLinkedList.middleList().data);
+//        boolean b = myLinkedList.isPalindromeSequence();
+//        System.out.println(b);
 //        myLinkedList.deleteDuplication();
 //        myLinkedList.display();
 //        myLinkedList.addEnd(1000);
@@ -72,7 +79,7 @@ public class Main {
 //        myLinkedList.reverseList();
 //        myLinkedList.display();
 ////        myLinkedList.remove(100);
-        System.out.println(myLinkedList.middleList());
+//        System.out.println(myLinkedList.middleList());
 //        myLinkedList.clear();
 //        System.out.println(myLinkedList.findKthRe(2));
 //        myLinkedList.display();
