@@ -267,6 +267,8 @@ public class MyLinkedList<E> {
         }
     }
     // 12. 找中间节点
+    //  给定一个带有头结点 head 的非空单链表，返回链表的中间结点。
+    //  如果有两个中间结点，则返回第二个中间结点。
     // slow 走一步; fast 走两步.
     // 当 fast 走到 null 时, slow 就是中间节点.
     // 该思路如果中间结点有两个, 则返回偏后面的节点.
@@ -338,5 +340,96 @@ public class MyLinkedList<E> {
                 cur = cur.next;
             }
         }
+        return this.head;
+    }
+    // 15. 判断是否有环
+    public boolean isCycle() {
+        Node<E> slow = this.head;
+        Node<E> fast = this.head;
+        while (slow != null && fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+    // 16. 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
+    public Node<E> detectCycle() {
+        // ① 判断是否有环
+        Node<E> slow = this.head;
+        Node<E> fast = this.head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                break;
+            }
+        }
+        // ② 两种情况
+        // a> 无环
+        if (fast == null || fast.next == null) {
+            return null;
+        }
+        // b> 有环
+        // 将一个结点放在头结点处, 另一个节点在相遇处
+        // 两个结点一步一步走, 直到相遇 , 该结点就是入环时的结点
+        slow = this.head;
+        while (slow != fast) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return slow;
+    }
+    // 17. 编写代码，以给定值x为基准将链表分割成两部分，所有小于x的结点排在大于或等于x的结点之前
+    public Node<E> partition(E x) {
+        Node<E> cur = this.head;
+        Node<E> bs = null;
+        Node<E> be = null;
+        Node<E> as = null;
+        Node<E> ae = null;
+        while (cur != null) {
+             if (cur.data.toString().compareTo(x.toString()) < 0) {
+                if (bs == null) {
+                    bs = cur;
+                    be = cur;
+                } else {
+                    be.next = cur;
+                    be = be.next;
+                }
+            } else {
+                if (as == null) {
+                    as = cur;
+                    ae = cur;
+                } else {
+                    ae.next = cur;
+                    ae = ae.next;
+                }
+            }
+            cur = cur.next;
+        }
+        if (ae != null) {
+            ae.next = null;
+        }
+        if (be != null) {
+            be.next = as;
+        } else {
+            bs = as;
+        }
+//        if (as != null) {
+//            ae.next = null;
+//        }
+//        if (bs != null) {
+//            be.next = null;
+//        }
+//        if (bs == null) {
+//            this.head = as;
+//        } else {
+//            be.next = as;
+//            this.head = bs;
+//        }
+        this.head = bs;
+        return this.head;
     }
 }
