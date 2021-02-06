@@ -19,15 +19,16 @@ public class Main {
         MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
         myLinkedList.add(3);
         myLinkedList.add(3);
-        myLinkedList.add(2,8);
         myLinkedList.add(3);
+        myLinkedList.add(3,8);
         myLinkedList.add(3);
 //        myLinkedList.add(2,3);
 //        myLinkedList.add(1);
 //        myLinkedList1.display();
 //        myLinkedList2.display();
         myLinkedList.display();
-        myLinkedList.deleteDuplication();
+        myLinkedList.deleteRepetition();
+//        myLinkedList.deleteDuplication();
 //        myLinkedList.merge(myLinkedList1, myLinkedList2);
 //        myLinkedList.partition(3);
 //        myLinkedList.remove(0);

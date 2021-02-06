@@ -256,15 +256,14 @@ public class MyLinkedList<E> {
             i++;
         }
         Node<E> slow = this.head;
-        if (i == k) {
-            while (fast != null) {
-                slow = slow.next;
-                fast = fast.next;
-            }
-            return slow;
-        } else {
+        if (i < k) {
             return null;
         }
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return slow;
     }
     // 12. 找中间节点
     //  给定一个带有头结点 head 的非空单链表，返回链表的中间结点。
@@ -448,5 +447,26 @@ public class MyLinkedList<E> {
         this.head = newHead.next;
         return this.head;
     }
+    // 19. 删除重复结点, 重复结点只保存一次, 切按照原本的顺序.
+    public Node<E> deleteRepetition() {
+        if (this.head == null || this.head.next == null) {
+            return this.head;
+        }
+        Node<E> cur = this.head;
+        while (cur != null) {
+            Node<E> p = cur;
+            //
+            while (p != null && p.next != null && cur != null && p.next.data.equals(cur.data)) {
+                // 如果相等就删除该节点: 删了之后继续比较这个新结点
+                while (p != null && p.next != null && cur != null && p.next.data.equals(cur.data)) {
+                    p.next = p.next.next;
+                }
+                // 不相等就将遍历结点向后推一步
+                p = p.next;
+            }
+            cur = cur.next;
 
+        }
+        return this.head;
+    }
 }
