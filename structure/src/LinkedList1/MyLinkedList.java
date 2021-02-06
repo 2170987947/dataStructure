@@ -321,25 +321,24 @@ public class MyLinkedList<E> {
     // 14. 遍历单链表一次,删除相同的结点
     // eg: 1 2 2 2 12 12 17------> 1 17
     public Node<E> deleteDuplication() {
+        // 傀儡结点
         Node<E> newHead = new Node(0);
-        newHead.next = this.head;
-        Node<E> pre = newHead;
+        Node<E> newHeadTail = newHead;
         Node<E> cur = this.head;
-        while (cur != null && cur.next !=null) {
-            if (cur.data == cur.next.data) {
-                while (cur != null && cur.next !=null && cur.data == cur.next.data) {
+        while (cur != null) {
+            if (cur != null && cur.next != null && cur.data.equals(cur.next.data)) {
+                while (cur != null && cur.next != null && cur.data.equals(cur.next.data)) {
                     cur = cur.next;
-                }
-                if (cur == null || cur.next == null) {
-
                 }
                 cur = cur.next;
             } else {
-                pre.next = cur;
-                pre = pre.next;
+                newHeadTail.next = cur;
+                newHeadTail = newHeadTail.next;
                 cur = cur.next;
             }
         }
+        newHeadTail.next = null;
+        this.head = newHead.next;
         return this.head;
     }
     // 15. 判断是否有环
@@ -422,13 +421,32 @@ public class MyLinkedList<E> {
     }
     // 18. 将两个有序链表合并为一个新的有序链表并返回。
     // 新链表是通过拼接给定的两个链表的所有节点组成的
-    public Node<E> merge(Node<E> node1, Node<E> node2) {
-        Node<E> newHead = this.head;
+    public Node<E> merge(MyLinkedList<E> myLinkedList1, MyLinkedList<E> myLinkedList2) {
+        // 傀儡结点
+        Node<E> newHead = new Node(1);
+        Node<E> node1 = myLinkedList1.head;
+        Node<E> node2 = myLinkedList2.head;
+        Node<E> cur = newHead;
         while (node1 != null && node2 != null) {
 
+            while (node1 != null && node2 != null && node1.data.toString().compareTo(node2.data.toString()) < 0) {
+                cur.next = node1;
+                cur = cur.next;
+                node1 = node1.next;
+            }
+            while (node1 != null && node2 != null && node1.data.toString().compareTo(node2.data.toString()) >= 0) {
+                cur.next = node2;
+                cur = cur.next;
+                node2 = node2.next;
+            }
         }
-        while (node1.data < node2.data) {
-
+        if (node1 == null) {
+            cur.next = node2;
+        } else {
+            cur.next = node1;
         }
+        this.head = newHead.next;
+        return this.head;
     }
+
 }

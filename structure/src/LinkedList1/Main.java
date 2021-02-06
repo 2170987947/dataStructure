@@ -8,16 +8,28 @@ package LinkedList1;
  */
 public class Main {
     public static void main(String[] args) {
+//        MyLinkedList<Integer> myLinkedList1 = new MyLinkedList<>();
+//        myLinkedList1.add(1);
+//        myLinkedList1.add(3);
+//        myLinkedList1.add(5);
+//        MyLinkedList<Integer> myLinkedList2 = new MyLinkedList<>();
+//        myLinkedList2.add(2);
+//        myLinkedList2.add(4);
+//        myLinkedList2.add(6);
         MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
-//        myLinkedList.add(3);
-//        myLinkedList.add(3);
-//        myLinkedList.add(2,8);
         myLinkedList.add(3);
         myLinkedList.add(3);
-        myLinkedList.add(2,3);
+        myLinkedList.add(2,8);
+        myLinkedList.add(3);
+        myLinkedList.add(3);
+//        myLinkedList.add(2,3);
 //        myLinkedList.add(1);
+//        myLinkedList1.display();
+//        myLinkedList2.display();
         myLinkedList.display();
-        myLinkedList.partition(3);
+        myLinkedList.deleteDuplication();
+//        myLinkedList.merge(myLinkedList1, myLinkedList2);
+//        myLinkedList.partition(3);
 //        myLinkedList.remove(0);
         myLinkedList.display();
 //        myLinkedList.remove(Integer.valueOf(4));
