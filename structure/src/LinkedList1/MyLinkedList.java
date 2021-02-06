@@ -417,19 +417,18 @@ public class MyLinkedList<E> {
         } else {
             bs = as;
         }
-//        if (as != null) {
-//            ae.next = null;
-//        }
-//        if (bs != null) {
-//            be.next = null;
-//        }
-//        if (bs == null) {
-//            this.head = as;
-//        } else {
-//            be.next = as;
-//            this.head = bs;
-//        }
         this.head = bs;
         return this.head;
+    }
+    // 18. 将两个有序链表合并为一个新的有序链表并返回。
+    // 新链表是通过拼接给定的两个链表的所有节点组成的
+    public Node<E> merge(Node<E> node1, Node<E> node2) {
+        Node<E> newHead = this.head;
+        while (node1 != null && node2 != null) {
+
+        }
+        while (node1.data < node2.data) {
+
+        }
     }
 }

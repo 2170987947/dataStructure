@@ -16,6 +16,9 @@ public class Main {
         System.out.println(linkedList.add("f"));
         linkedList.add(1,"mm");
         linkedList.set(0,"kk");
+//        System.out.println(linkedList.get(0));
+//        linkedList.clear();
+        System.out.println(linkedList.indexOf("f"));
 //        System.out.println(linkedList.remove());
 //        System.out.println(linkedList.remove());
         System.out.println(Arrays.toString(linkedList.toArray()));
