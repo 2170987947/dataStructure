@@ -461,7 +461,7 @@ public class MyLinkedList<E> {
                 while (p != null && p.next != null && cur != null && p.next.data.equals(cur.data)) {
                     p.next = p.next.next;
                 }
-                // 不相等就将遍历结点向后推一步
+                // 不相等就将遍历结点向后推一步, 继续比较, 直到 p 或 p.next 为空
                 p = p.next;
             }
             cur = cur.next;
