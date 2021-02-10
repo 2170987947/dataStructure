@@ -16,7 +16,9 @@ public class Test {
 //        deque.push(4);
         Deque<Character> stack = new LinkedList<>();
         String string = "[{}]()";
+        String string1 = "{}{{})";
         System.out.println(pi(stack, string));
+        System.out.println(pi(stack, string1));
 
     }
     public static boolean pi(Deque stack, String string) {
@@ -32,21 +34,29 @@ public class Test {
                     if (stack.isEmpty()) {
                         return false;
                     }
-                    if (comp(s,stack.peek())) {
-                        return true;
-                    } else {
+                    if (!comp(s,stack.peek())) {
                         return false;
+                    } else {
+                        stack.pop();
                     }
             }
+        }
+        if (stack.isEmpty()) {
+            return true;
         }
         return false;
     }
 
     public static boolean comp(char s, Object peek) {
         char c = (char) peek;
-        if (s == c) {
+        if (c == '[' && s ==']') {
             return true;
+        } else if (c == '{' && s == '}') {
+            return true;
+        } else if (c == '(' && s == ')') {
+            return true;
+        } else {
+            return false;
         }
-        return false;
     }
 }
