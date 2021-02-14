@@ -16,17 +16,17 @@ public class QueueTransformStack {
     }
     public Integer peek() {
         for (int i = 0; i < this.stack.size() - 1; i++) {
-            Integer e = this.stack.pop();
+            Integer e = this.stack.poll();
             this.stack.offer(e);
         }
         return this.stack.peek();
     }
     public Integer pop() {
         for (int i = 0; i < this.stack.size() - 1; i++) {
-            Integer e = this.stack.pop();
+            Integer e = this.stack.poll();
             this.stack.offer(e);
         }
-        return this.stack.pop();
+        return this.stack.poll();
     }
 
     public static void main(String[] args) {
