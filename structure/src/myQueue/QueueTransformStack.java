@@ -31,11 +31,16 @@ public class QueueTransformStack {
 
     public static void main(String[] args) {
         QueueTransformStack queueTransformStack = new QueueTransformStack();
-        queueTransformStack.stack.offer(1);
-        queueTransformStack.stack.offer(2);
-        queueTransformStack.stack.offer(3);
+//        queueTransformStack.stack.offer(1);
+//        queueTransformStack.stack.offer(2);
+//        queueTransformStack.stack.offer(3);
+        queueTransformStack.push(1);
+        queueTransformStack.push(2);
+        queueTransformStack.push(3);
+
         queueTransformStack.push(4);
         System.out.println(queueTransformStack.pop());
+        System.out.println(queueTransformStack.peek());
         System.out.println(queueTransformStack.pop());
         System.out.println(queueTransformStack.pop());
         System.out.println(queueTransformStack.pop());
