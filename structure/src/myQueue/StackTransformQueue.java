@@ -1,9 +1,7 @@
 package myQueue;
 
-import java.util.Collection;
 import java.util.Deque;
-import java.util.Iterator;
-import java.util.Queue;
+import java.util.LinkedList;
 
 /**
  * @author FMM
@@ -11,28 +9,28 @@ import java.util.Queue;
  * @date 2021/2/11 23:43
  */
 public class StackTransformQueue {
-    public Deque<Integer> stack1;
-    public Deque<Integer> stack2;
+    public Deque<Integer> stack1 = new LinkedList<>();
+    public Deque<Integer> stack2 = new LinkedList<>();
 
     public void offer(Integer e) {
         this.stack2.push(e);
     }
     public Integer peek() {
-        if (this.stack1 == null && this.stack2 == null) {
+        if (this.stack1.size() == 0 && this.stack2.size() == 0) {
             return null;
         }
-        if (this.stack2 != null && this.stack1 == null) {
-            while (this.stack2 != null) {
-                this.stack1.push(stack2.pop());
+        if (this.stack2.size() != 0 && this.stack1.size() == 0) {
+            while (this.stack2.size() != 0) {
+                this.stack1.push(this.stack2.pop());
             }
         }
         return this.stack1.peek();
     }
     public Integer poll() {
-        if (this.stack1 == null && this.stack2 == null) {
+        if (this.stack1.size() == 0 && this.stack2.size() == 0) {
             return null;
         }
-        if (this.stack1 == null && this.stack2 != null) {
+        if (this.stack1.size() == 0 && this.stack2.size() != 0) {
             this.stack1.push(this.stack2.pop());
         }
         return this.stack1.pop();
@@ -44,9 +42,10 @@ public class StackTransformQueue {
         stackTransformQueue.offer(2);
         stackTransformQueue.offer(3);
         stackTransformQueue.offer(4);
-
         System.out.println(stackTransformQueue.peek());
         System.out.println(stackTransformQueue.poll());
-
+        System.out.println(stackTransformQueue.poll());
+        System.out.println(stackTransformQueue.poll());
+        System.out.println(stackTransformQueue.poll());
     }
 }
