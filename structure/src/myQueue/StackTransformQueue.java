@@ -46,6 +46,5 @@ public class StackTransformQueue {
         System.out.println(stackTransformQueue.poll());
         System.out.println(stackTransformQueue.poll());
         System.out.println(stackTransformQueue.poll());
-        System.out.println(stackTransformQueue.poll());
     }
 }
