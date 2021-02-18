@@ -16,5 +16,11 @@ public class shunxu {
         this.stack1 = new LinkedList<>();
         this.stack2 = new LinkedList<>();
     }
+    public void q() {
+        if (this.stack1 == null) {
+            return;
+        }
+
+    }
     
 }
