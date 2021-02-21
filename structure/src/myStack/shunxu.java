@@ -19,12 +19,7 @@ public class shunxu {
 
     public void q() {
         if (this.stack1 == null) {
-
-
-
             return;
         }
-
     }
-    
 }
