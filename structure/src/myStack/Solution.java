@@ -35,6 +35,7 @@ public class Solution {
                 } else {
                     break;
                 }
+
                 
                 stack.pop();
             }
