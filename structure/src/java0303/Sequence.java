@@ -18,17 +18,21 @@ public class Sequence {
         }
         return list;
     }
-    public static boolean idOrder(int[] pushStack, int[] popStack) {
-        List<Integer> pushS = toList(pushStack);
-        List<Integer> popS = toList(popStack);
+    public static boolean isOrder(int[] pushStack, int[] popStack) {
+        List<Integer> pushList = toList(pushStack);
+        List<Integer> popList = toList(popStack);
         Deque<Integer> stack = new LinkedList<>();
-        while (popS != null) {
-            int p = popS.remove(0);
-            while (stack.isEmpty() || stack.peek().intValue() != p) {
-                if (pushS == null) {
-                    return false;
+        while (!popList.isEmpty()) {
+            int p = popList.remove(0);
+            while (true) {
+                if (stack.isEmpty() || stack.peek().intValue() != p) {
+                    if (pushList.isEmpty()) {
+                        return false;
+                    }
+                    stack.push(pushList.remove(0));
+                } else {
+                    break;
                 }
-                stack.push(pushS.remove(0));
             }
             stack.pop();
         }
@@ -36,8 +40,8 @@ public class Sequence {
     }
 
     public static void main(String[] args) {
-        int[] arr1 = {1, 2, 3, 4};
-        int[] arr2 = {3, 2, 4, 1};
-        System.out.println(idOrder(arr1, arr2));
+        int[] arr1 = {1, 2, 3};
+        int[] arr2 = {3, 2, 1};
+        System.out.println(isOrder(arr1, arr2));
     }
 }

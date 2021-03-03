@@ -30,22 +30,20 @@ public class Solution {
                     if (pushList.isEmpty()) {
                         return false;
                     }
-                    Integer q = pushList.remove(0);
-                    stack.push(q);
+                    stack.push(pushList.remove(0));
                 } else {
                     break;
                 }
             }
             stack.pop();
         }
-        return false;
+        return true;
     }
-
-
     public static void main(String[] args) {
         Solution solution = new Solution();
         int[] arr1 = {1, 2, 3};
         int[] arr2 = {3, 2, 1};
         System.out.println(solution.isPoOrder(arr1, arr2));
+
     }
 }
