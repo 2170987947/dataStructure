@@ -23,20 +23,20 @@ public class Solution {
         List<Integer> pushList = intArrayToList(pushA);
         List<Integer> popList = intArrayToList(popA);
         Deque<Integer> stack = new LinkedList<>();
-        while (popList.isEmpty()) {
+        while (!popList.isEmpty()) {
             int p = popList.remove(0);
-            while (stack.isEmpty() || stack.peek() != p) {
+            while (true) {
                 if (stack.isEmpty() || stack.peek().intValue() != p) {
                     if (pushList.isEmpty()) {
                         return false;
                     }
-                    Integer q = popList.remove(0);
+                    Integer q = pushList.remove(0);
                     stack.push(q);
                 } else {
                     break;
                 }
-                stack.pop();
             }
+            stack.pop();
         }
         return false;
     }
@@ -44,8 +44,8 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] arr1 = {1, 2, 3, 4, 5};
-        int[] arr2 = {3, 5, 4, 2, 1};
-        solution.isPoOrder(arr1, arr2);
+        int[] arr1 = {1, 2, 3};
+        int[] arr2 = {3, 2, 1};
+        System.out.println(solution.isPoOrder(arr1, arr2));
     }
 }
