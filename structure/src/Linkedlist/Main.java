@@ -14,10 +14,10 @@ public class Main {
         myLinkedList.addEnd(1);
         myLinkedList.addEnd(3);
         myLinkedList.addEnd(4);
-        myLinkedList.addEnd(1);
+        myLinkedList.addEnd(3);
         myLinkedList.addEnd(1);
         myLinkedList.display();
-        System.out.println(myLinkedList.findKthRe(3).data);
+//        System.out.println(myLinkedList.findKthRe(3).data);
 //        myLinkedList.Merge()
 //        myLinkedList.removeAllKey(1);
 //        System.out.println(myLinkedList.isPalindromeSequence());
@@ -35,8 +35,8 @@ public class Main {
 //        myLinkedList.clear();
 //        myLinkedList.display();
 //        System.out.println(myLinkedList.middleList().data);
-//        boolean b = myLinkedList.isPalindromeSequence();
-//        System.out.println(b);
+        boolean b = myLinkedList.isPalindromeSequence();
+        System.out.println(b);
 //        myLinkedList.deleteDuplication();
 //        myLinkedList.display();
 //        myLinkedList.addEnd(1000);

@@ -400,10 +400,12 @@ public class MyLinkedList {
         }
         // 3. 比较相等
         while (newHead != null) {
-            if (newHead.data != this.head.data) {
+            Node node = this.head;
+            if (newHead.data != node.data) {
                 return false;
             }
             newHead = newHead.next;
+            node = newHead.next;
         }
         return true;
     }
