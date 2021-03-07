@@ -1,4 +1,4 @@
-package MyTree;
+package MyTree.TreeShowMethods;
 
 /**
  * @author FMM
@@ -6,9 +6,9 @@ package MyTree;
  * @date 2021/3/5 15:35
  */
 public class TreeNode {
-    char var;
-    TreeNode left;
-    TreeNode right;
+    public char var;
+    public TreeNode left;
+    public TreeNode right;
     public TreeNode(char var) {
         this.var = var;
     }

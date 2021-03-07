@@ -1,4 +1,4 @@
-package MyTree;
+package MyTree.TreeShowMethods;
 
 /**
  * @author FMM
