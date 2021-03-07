@@ -1,4 +1,6 @@
-package MyTree;
+package MyTree.Traversal;
+
+import MyTree.TreeShowMethods.TreeNode;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -26,6 +28,5 @@ public class PreTraversal {
                 this.stack.push(node.left);
             }
         }
-
     }
 }

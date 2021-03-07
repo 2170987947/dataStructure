@@ -1,4 +1,6 @@
-package MyTree;
+package MyTree.Traversal;
+
+import MyTree.TreeShowMethods.TreeNode;
 
 import java.util.Deque;
 import java.util.LinkedList;
