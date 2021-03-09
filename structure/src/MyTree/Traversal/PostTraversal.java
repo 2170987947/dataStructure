@@ -14,9 +14,10 @@ public class PostTraversal {
     public void postTraversal1(TreeNode root) {
         Deque<TreeNode> stack = new LinkedList<>();
         stack.push(root);
+        System.out.print("后序遍历: ");
         while (!stack.isEmpty()) {
             TreeNode node = stack.peek();
-            System.out.print(node.var);
+            System.out.print(node.val);
             if (node.right != null) {
                 stack.push(node.right);
             }

@@ -17,10 +17,11 @@ public class PreTraversal {
         if (root == null) {
             return;
         }
+        System.out.print("先序遍历: ");
         this.stack.push(root);
         while (!this.stack.isEmpty()) {
             TreeNode node = this.stack.pop();
-            System.out.print(node.var);
+            System.out.print(node.val);
             if (node.right != null) {
                 this.stack.push(node.right);
             }

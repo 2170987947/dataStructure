@@ -1,6 +1,5 @@
 package MyTree.Traversal;
 
-import MyTree.TreeMehods;
 import MyTree.TreeShowMethods.TreeNode;
 
 /**
@@ -11,7 +10,7 @@ import MyTree.TreeShowMethods.TreeNode;
 public class TreeTraversal {
     public static void preTraversal(TreeNode root) {
         if (root != null) {
-            System.out.print(root.var);
+            System.out.print(root.val);
             preTraversal(root.left);
             preTraversal(root.right);
         } else {
@@ -23,7 +22,7 @@ public class TreeTraversal {
             return;
         }
         inTraversal(root.left);
-        System.out.print(root.var);
+        System.out.print(root.val);
         inTraversal(root.right);
     }
     public static void postTraversal(TreeNode root) {
@@ -32,7 +31,7 @@ public class TreeTraversal {
         }
         postTraversal(root.left);
         preTraversal(root.right);
-        System.out.print(root.var);
+        System.out.print(root.val);
     }
 
     public static void main(String[] args) {
@@ -62,7 +61,7 @@ public class TreeTraversal {
 //        System.out.print("后序遍历: ");
 //        postTraversal.postTraversal1(root);
 //        System.out.println();
-        TreeMehods treeMehods = new TreeMehods();
+//        TreeMehods treeMehods = new TreeMehods();
 //        System.out.println(treeMehods.find2(root, 'A'));
 //        System.out.println(treeMehods.find2(root, 'e'));
 //        System.out.println(treeMehods.find2(root, 'B'));
@@ -70,13 +69,15 @@ public class TreeTraversal {
 //        System.out.println(treeMehods.find2(root, 'D'));
 //        System.out.println(treeMehods.find2(root, 'E'));
 //        System.out.println(treeMehods.find2(root, 'F'));
-        System.out.println(treeMehods.find3(root, 'A').var);
-        System.out.println(treeMehods.find3(root, 'B').var);
-        System.out.println(treeMehods.find3(root, 'C').var);
-        System.out.println(treeMehods.find3(root, 'D').var);
-        System.out.println(treeMehods.find3(root, 'E').var);
-        System.out.println(treeMehods.find3(root, 'e'));
-        System.out.println(treeMehods.find3(root, 'F'));
+//        System.out.println(treeMehods.find3(root, 'A').var);
+//        System.out.println(treeMehods.find3(root, 'B').var);
+//        System.out.println(treeMehods.find3(root, 'C').var);
+//        System.out.println(treeMehods.find3(root, 'D').var);
+//        System.out.println(treeMehods.find3(root, 'E').var);
+//        System.out.println(treeMehods.find3(root, 'e'));
+//        System.out.println(treeMehods.find3(root, 'F'));
+        LevelOrderTraversal levelOrderTraversal = new LevelOrderTraversal();
+        levelOrderTraversal.levelOrderTraversal(root);
 
     }
 }

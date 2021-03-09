@@ -6,10 +6,10 @@ package MyTree.TreeShowMethods;
  * @date 2021/3/5 15:35
  */
 public class TreeNode {
-    public char var;
+    public char val;
     public TreeNode left;
     public TreeNode right;
     public TreeNode(char var) {
-        this.var = var;
+        this.val = var;
     }
 }

@@ -2,8 +2,10 @@ package MyTree;
 
 import MyTree.TreeShowMethods.TreeNode;
 
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author FMM
@@ -18,7 +20,7 @@ public class TreeMehods {
             return;
         }
         size++;
-        System.out.println(root.var);
+        System.out.println(root.val);
         preOrderTraversal(root.left);
         preOrderTraversal(root.right);
     }
@@ -31,7 +33,7 @@ public class TreeMehods {
             leafCount++;
         }
         inOrderTraversal(root.left);
-        System.out.println(root.var);
+        System.out.println(root.val);
         inOrderTraversal(root.right);
     }
     // 后序遍历
@@ -41,7 +43,7 @@ public class TreeMehods {
         }
         postOrderTraversal(root.left);
         postOrderTraversal(root.right);
-        System.out.println(root.var);
+        System.out.println(root.val);
     }
     // 遍历思路求结点个数
     public int getSize1(TreeNode root) {
@@ -107,7 +109,7 @@ public class TreeMehods {
         if (root == null) {
             return false;
         } else {
-            if (root.var == val) {
+            if (root.val == val) {
                 return true;
             } else {
                 boolean treeNode = find1(root.left, val);
@@ -130,7 +132,7 @@ public class TreeMehods {
         if (root == null) {
             return false;
         }
-        if (root.var == var) {
+        if (root.val == var) {
             return true;
         }
         boolean result = find2(root.left, var);
@@ -145,7 +147,7 @@ public class TreeMehods {
         if (root == null) {
             return null;
         } else {
-            if (root.var == var) {
+            if (root.val == var) {
                 return root;
             } else {
                 TreeNode treeNode = find3(root.left, var);
@@ -163,7 +165,7 @@ public class TreeMehods {
         if (root == null) {
             return null;
         }
-        if (root.var == var) {
+        if (root.val == var) {
             return root;
         }
         TreeNode treeNode = find3(root.left, var);
@@ -197,7 +199,7 @@ public class TreeMehods {
         queue.add(root);
         while (!queue.isEmpty()) {
             TreeNode treeNode = queue.remove();
-            System.out.println(treeNode.var);
+            System.out.println(treeNode.val);
             if (treeNode.left != null) {
                 queue.add(treeNode.left);
             }
@@ -209,9 +211,60 @@ public class TreeMehods {
 
     // 判断二叉树是否为完全二叉树
     public boolean isCompleteTree(TreeNode root) {
-        if (root == null) {
-            return true;
+        Deque<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (true) {
+            TreeNode node = queue.remove();
+            if (node == null) {
+                break;
+            }
+            queue.add(node.left);
+            queue.add(node.right);
         }
-        return isCompleteTree(root.left) == isCompleteTree(root.right);
+        while (!queue.isEmpty()) {
+            if (queue.remove().val != '#') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // 判断一个树是否为平衡树
+    // 判断两个树是否相同
+    // 判断一个树是否具有对称性
+
+    // 二叉树的分层遍历
+    public List<List<Character>> levelOrder(TreeNode root) {
+        class Inner{
+            TreeNode node;
+            int level;
+            public Inner(TreeNode n, int l) {
+                this.node = n;
+                this.level = l;
+            }
+        }
+
+        Deque<Inner> queue = new LinkedList<>();
+        List<List<Character>> list = new LinkedList<>();
+        if (root == null) {
+            return list;
+        }
+        queue.add(new Inner(root, 0));
+        while (!queue.isEmpty()) {
+            Inner inner = queue.remove();
+            TreeNode node = inner.node;
+            int level1 = inner.level;
+            if (level1 == list.size()){
+                list.add(new ArrayList<>());
+            }
+            list.get(level1).add(node.val);
+            if (node.left != null) {
+                queue.add(new Inner(node.left, level1 + 1));
+            }
+            if (node.right != null) {
+                queue.add(new Inner(node.right, level1 + 1));
+            }
+        }
+        return list;
     }
 }
