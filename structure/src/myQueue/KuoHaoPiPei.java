@@ -8,7 +8,7 @@ import java.util.LinkedList;
  * @version 7.0
  * @date 2021/2/9 17:49
  */
-public class Test {
+public class KuoHaoPiPei {
     public static void main(String[] args) {
 //        Deque<Integer> deque = new LinkedList<>();
 //        deque.addFirst(1);

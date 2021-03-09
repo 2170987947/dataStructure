@@ -5,7 +5,7 @@ package java0302;
  * @version 7.0
  * @date 2021/3/2 22:02
  */
-public class Solution {
+public class CanConstruct {
     public static boolean canConstruct(String ransom, String magazine) {
         if (ransom.length() > magazine.length()) {
             return false;
