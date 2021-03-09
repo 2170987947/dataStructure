@@ -12,28 +12,28 @@ public class PalindromeList {
             return true;
         }
         ListNode temp = A;
-        ListNode B = new ListNode(0);
-        ListNode BTail = B;
+        ListNode newHead = new ListNode(0);
+        ListNode Tail = newHead;
         while (temp != null) {
-            BTail.next = new ListNode(temp.val);
-            BTail = BTail.next;
+            Tail.next = new ListNode(temp.val);
+            Tail = Tail.next;
         }
-        B = B.next;
-        ListNode newHead;
+        newHead = newHead.next;
+        ListNode B = null;
         ListNode pre = null;
-        ListNode cur = B;
+        ListNode cur = newHead;
 
         while (cur != null) {
             ListNode next = cur;
             if (next == null) {
-                newHead = cur;
+                B = cur;
             }
             cur.next = pre;
             pre = cur;
             cur = next;
         }
         ListNode cur1 = A;
-        ListNode cur2 = newHead;
+        ListNode cur2 = B;
         while (cur1 != null && cur2 != null) {
             if (cur1.val != cur2.val) {
                 return false;
