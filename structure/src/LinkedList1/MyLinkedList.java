@@ -455,7 +455,6 @@ public class MyLinkedList<E> {
         Node<E> cur = this.head;
         while (cur != null) {
             Node<E> p = cur;
-            //
             while (p != null && p.next != null && cur != null && p.next.data.equals(cur.data)) {
                 // 如果相等就删除该节点: 删了之后继续比较这个新结点
                 while (p != null && p.next != null && cur != null && p.next.data.equals(cur.data)) {
