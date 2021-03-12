@@ -28,5 +28,6 @@ public class LevelOrderTraversal {
                 this.queue.add(node.right);
             }
         }
+        System.out.println();
     }
 }

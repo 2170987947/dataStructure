@@ -17,7 +17,7 @@ public class InTraversal {
         if (root == null) {
             return;
         }
-        System.out.print("中序遍历: ");
+        System.out.print("中序遍历(非递归): ");
         while (!stack.isEmpty() || cur != null) {
             if (cur != null) {
                 stack.push(cur);
@@ -28,5 +28,6 @@ public class InTraversal {
                 cur = cur.right;
             }
         }
+        System.out.println();
     }
 }

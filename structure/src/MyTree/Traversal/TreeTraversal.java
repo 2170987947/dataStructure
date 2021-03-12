@@ -49,18 +49,16 @@ public class TreeTraversal {
 //        System.out.print("后序遍历: ");
 //        postTraversal(root);
 //        System.out.println();
-//        PreTraversal preTraversal = new PreTraversal();
-//        System.out.print("先序遍历: ");
-//        preTraversal.preTraversal1(root);
-//        System.out.println();
-//        InTraversal inTraversal = new InTraversal();
-//        System.out.print("中序遍历: ");
-//        inTraversal.inTraversal1(root);
-//        System.out.println();
-//        PostTraversal postTraversal = new PostTraversal();
-//        System.out.print("后序遍历: ");
-//        postTraversal.postTraversal1(root);
-//        System.out.println();
+
+        PreTraversal preTraversal = new PreTraversal();
+        preTraversal.preTraversal1(root);
+
+        InTraversal inTraversal = new InTraversal();
+        inTraversal.inTraversal1(root);
+
+        PostTraversal postTraversal = new PostTraversal();
+        postTraversal.postTraversal1(root);
+
 //        TreeMehods treeMehods = new TreeMehods();
 //        System.out.println(treeMehods.find2(root, 'A'));
 //        System.out.println(treeMehods.find2(root, 'e'));

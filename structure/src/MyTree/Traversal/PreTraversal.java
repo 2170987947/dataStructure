@@ -17,7 +17,7 @@ public class PreTraversal {
         if (root == null) {
             return;
         }
-        System.out.print("先序遍历: ");
+        System.out.print("先序遍历(非递归): ");
         this.stack.push(root);
         while (!this.stack.isEmpty()) {
             TreeNode node = this.stack.pop();
@@ -29,5 +29,6 @@ public class PreTraversal {
                 this.stack.push(node.left);
             }
         }
+        System.out.println();
     }
 }
