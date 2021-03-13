@@ -92,6 +92,7 @@ public class CirculationDoubleQueue {
         return true;
     }
 
+    // 得到头部元素
     public Integer getFront() {
         // 队列为空
         if (this.front == this.rear) {
@@ -100,7 +101,8 @@ public class CirculationDoubleQueue {
 
         return arr[front];
     }
-
+    
+    // 得到尾部元素
     public Integer getRear() {
         // 队列为空
         if (this.front == this.rear) {
