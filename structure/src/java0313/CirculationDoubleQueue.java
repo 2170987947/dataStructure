@@ -44,7 +44,7 @@ public class CirculationDoubleQueue {
         if ((this.rear + 1) % capacity == 0) {
             return false;
         }
-        front = (front - 1 + capacity) % capacity
+        front = (front - 1 + capacity) % capacity;
         arr[front] = val;
         return true;
     }
@@ -101,7 +101,7 @@ public class CirculationDoubleQueue {
 
         return arr[front];
     }
-    
+
     // 得到尾部元素
     public Integer getRear() {
         // 队列为空
