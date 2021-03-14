@@ -7,6 +7,10 @@ package java0314;
  */
 public class Sort {
     // 1. 插入排序
+    // 时间复杂度: 最好 O(n)
+    //           平均 O(n ^ 2)
+    //           最坏 O(n ^ 2)
+    // 空间复杂度: O(1)
     public int[] insertSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             int key = arr[i + 1];
@@ -30,6 +34,8 @@ public class Sort {
     }
 
     // 2. 选择排序
+    // 时间复杂度: 最好/平均/最坏 O(n ^ 2)
+    // 空间复杂度: O(1)
     public int[] selectSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             int max = 0;
@@ -62,6 +68,10 @@ public class Sort {
         return arr;
     }
     // 4. 冒泡排序
+    // 时间复杂度: 最好 O(n) ----> 对于一个有序数组
+    //           平均 O(n ^ 2) ----> 对于一般数组
+    //           最坏 O(n ^ 2) ----> 对于一般数组
+    // 空间复杂度: O(1)
     public int[] bubbleSort(int[] arr) {
         boolean isSort = true;
         for (int i = 0; i < arr.length - 1; i++) {
@@ -80,6 +90,8 @@ public class Sort {
         return arr;
     }
     // 5. 堆排序
+    // 时间复杂度: 最好/平均/最坏 O(nlog(n))
+    // 空间复杂度: O(1)
     public int[] heapSort(int[] arr) {
         // 寻找最后一个结点的父节点.
         int index = (arr.length - 1 - 1) / 2;
@@ -116,10 +128,18 @@ public class Sort {
         }
     }
     // 6. 快速排序
+    // 时间复杂度: 最好 O(nlog(n))
+    //           平均 O(n ^ 2)
+    //           最坏 O(n ^ 2)
+    // 空间复杂度: O(1)
+    // [start, end) 进行排序
     public void fastSort(int[] arr, int start, int end) {
+        // 如果元素只有一个, 则无序排序
         if (end - start <= 1) {
             return;
         }
+        // 将 start 下标所指的元素作为基准进行排序
+        // 将比 key 小的元素放在 key 前面, 其余放在 key 后.
         int key = arr[start];
         int i = start + 1;
         int j = end - 1;
@@ -134,12 +154,53 @@ public class Sort {
                 swap(arr, i, j);
             }
         }
+        // 此时 j 所指的元素为从左到右追后一个比 key 小的元素
         swap(arr, start, j);
         fastSort(arr, start, j);
         fastSort(arr, j + 1, end);
     }
     // 7. 归并排序
-    public void mergeSort(int[] arr) {
-
+    // 时间复杂度: 最好/平均/最坏 O(nlog(n))
+    // 空间复杂度: O(1)
+    // 对 [start, end) 排序
+    public int[] mergeSort(int[] arr, int start, int end) {
+        // 如果只有一个元素, 则无序排序
+        if (end - start <= 1) {
+            return arr;
+        }
+        int index = (start + end) / 2;
+        mergeSort(arr, start, index);
+        mergeSort(arr, index, end);
+        merge(arr, start, index, end);
+        return arr;
+    }
+    // 合并 [start, index) 和 [index, end) 两断本省已排好序
+    public int[] merge(int[] arr, int start, int index, int end) {
+        // 临时存放已排好序的元素
+        int[] result = new int[end - start];
+        int count = 0;
+        int i = start;
+        int j = index;
+        while (i < index && j < end) {
+            if (arr[i] <= arr[j]) {
+                result[count++] = arr[i++];
+            } else {
+                result[count++] = arr[j++];
+            }
+        }
+        if (i < index) {
+            while (i < index) {
+                result[count++] = arr[i++];
+            }
+        } else {
+            while (j < end) {
+                result[count++] = arr[j++];
+            }
+        }
+        // 将结果数组搬运回原数组
+        for (i = start; i < end; i++) {
+            arr[i] = result[i - start];
+        }
+        return arr;
     }
 }
