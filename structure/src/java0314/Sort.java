@@ -93,15 +93,45 @@ public class Sort {
     // 时间复杂度: 最好/平均/最坏 O(nlog(n))
     // 空间复杂度: O(1)
     public int[] heapSort(int[] arr) {
-        // 寻找最后一个结点的父节点.
+        // 寻找最后一个结点的父节点
         int index = (arr.length - 1 - 1) / 2;
         for (int i = index; i >= 0; i--) {
-            downAdjust(arr, i);
+            downAdjust2(arr, i);
         }
         return arr;
     }
-    // 向下调整
+    // 向下调整1
     public void downAdjust(int[] arr, int index) {
+        while (true) {
+            int left = index * 2 + 1;
+            if (left >= arr.length) {
+                // 无孩子
+                return;
+            }
+            // 有左孩子
+            int small = left;
+            // 有右孩子
+            if (left + 1 < arr.length) {
+                int right = left + 1;
+                if (arr[small] > arr[right]) {
+                    small = right;
+                }
+            }
+
+            if (arr[small] >= arr[index]) {
+                // 不调整
+                return;
+            } else {
+                // 调整
+                // 交换
+                swap(arr, small, index);
+                index = small;
+//                downAdjust(arr, small);
+            }
+        }
+    }
+    // 向下调整2
+    public void downAdjust2(int[] arr, int index) {
         int left = index * 2 + 1;
         if (left >= arr.length) {
             // 无孩子
@@ -117,14 +147,14 @@ public class Sort {
             }
         }
 
-        if (arr[small] > arr[index]) {
+        if (arr[small] >= arr[index]) {
             // 不调整
             return;
         } else {
             // 调整
             // 交换
             swap(arr, small, index);
-            downAdjust(arr, small);
+            downAdjust2(arr, small);
         }
     }
     // 6. 快速排序
