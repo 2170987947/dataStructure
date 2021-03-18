@@ -25,12 +25,12 @@ public class Test {
 //        System.out.println(Arrays.toString(sort.insertSort(arr)));
 //        System.out.println(Arrays.toString(sort.selectSort(arr)));
 //        System.out.println(Arrays.toString(sort.hillSort(arr, arr.length / 2)));
-//        System.out.println(Arrays.toString(sort.heapSort(arr)));
-//        System.out.println(Arrays.toString(sort.heapSort(arr1)));
+        System.out.println(Arrays.toString(sort.heapSort(arr)));
+        System.out.println(Arrays.toString(sort.heapSort(arr1)));
 //        sort.fastSort(arr, 0, arr.length);
 //        System.out.println(Arrays.toString(arr));
 //        sort.fastSort(arr1, 0, arr1.length);
 //        System.out.println(Arrays.toString(arr1));
-        System.out.println(Arrays.toString(sort.mergeSort(arr, 0, 5)));
+//        System.out.println(Arrays.toString(sort.mergeSort(arr, 0, 5)));
     }
 }

@@ -66,5 +66,8 @@ public class TreeTest {
         }
         return s.toString();
     }
-    
+    // 4. 二叉搜索树
+    public TreeNode Convert(TreeNode root) {
+        return null;
+    }
 }

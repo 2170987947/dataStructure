@@ -259,25 +259,27 @@ public class TreeOperation {
     // 16. 二叉搜索树
     public TreeNode searchTree(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode newRoot = null;
+        TreeNode head = null;
         TreeNode cur = root;
-        TreeNode pre = null;
+        TreeNode tail = null;
         while (!stack.isEmpty() || cur != null) {
             while (cur != null) {
                 stack.push(cur);
                 cur = cur.left;
             }
             cur = stack.pop();
-            if (newRoot == null) {
-                newRoot = cur;
-                pre = cur;
+            // 插入链表中
+            if (head == null) {
+                head = cur;
+                tail = cur;
             } else {
-                pre.right = cur;
-                cur.left = pre;
-                pre = cur;
+                tail.right = cur;
+                cur.left = tail;
+                tail = cur;
             }
+
             cur = cur.right;
         }
-        return newRoot;
+        return head;
     }
 }
