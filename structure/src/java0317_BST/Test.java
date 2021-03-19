@@ -14,10 +14,13 @@ public class Test {
         root.left.left = new TreeNode('A');
         root.left.right = new TreeNode('C');
         BST bst = new BST();
-        System.out.println(bst.inOrder2(root));
-//        bst.insert(root, 'E');
-//        bst.insert(root, 'E');
-
 //        bst.inOrder(root);
+//        System.out.println(bst.head);
+//        System.out.println(bst.inOrder2(root));
+//        bst.insert(root, 'E');
+//        bst.inOrder(root);
+//        System.out.println(bst.head);
+//        System.out.println(bst.find(root, 'A').val);
+
     }
 }
