@@ -1,5 +1,7 @@
 package java0317_BST;
 
+import java0318_Tree.Tree;
+
 import java.util.Stack;
 
 /**
@@ -8,14 +10,18 @@ import java.util.Stack;
  * @date 2021/3/15 21:02
  */
 public class BST {
+    TreeNode root = null;
     TreeNode head = null;
     TreeNode tail = null;
 
+//    public BST(TreeNode root) {
+//        this.root = root;
+//    }
 
     // 二叉搜索树的中序遍历是有序的
     // 1. 遍历二叉搜索树
-    public void inOrder(TreeNode root) {
-        if (root == null) {
+    public void inOrder(TreeNode left) {
+        if (this.root == null) {
             return;
         }
         inOrder(root.left);
@@ -31,7 +37,7 @@ public class BST {
             tail = tail.right;
         }
     }
-    public TreeNode inOrder2(TreeNode root) {
+    public TreeNode inOrder2() {
         if (root == null) {
             return null;
         }
@@ -56,7 +62,7 @@ public class BST {
         return head2.right;
     }
     // 2. 二叉搜索树的插入
-    public TreeNode insert(TreeNode root, char val) {
+    public TreeNode insert(char val) {
         if (root == null) {
             root = new TreeNode(val);
             return root;
@@ -90,30 +96,71 @@ public class BST {
     }
 
     // 3. 二叉搜索树的删除
-    public TreeNode remove(TreeNode root, char c) {
-        if (root == null) {
-            return null;
-        } else if (root.val == c) {
-            // 要删除的结点是根节点
-            if (root.left == null && root.right == null) {
-                return null;
-            } else if (root.left == null && root.right != null) {
-
+    public boolean remove(char c) {
+        // 先找到该节点
+        TreeNode cur = root;
+        TreeNode pre = null;
+        while (cur != null) {
+            int cmp = compare(c, cur.val);
+            if (cmp == 0) {
+                removeInternal(cur, pre);
+                return true;
+            } else if (cmp < 0) {
+                pre = cur;
+                cur = cur.left;
             } else {
-                TreeNode cur = root.left;
-                TreeNode pre = null;
-                while (cur.right != null) {
-                    pre = cur;
-                    cur = cur.right;
-                }
-                root.val = cur.val;
-                pre.right = cur.left;
+                pre = cur;
+                cur = cur.right;
+            }
+        }
+        return false;
+    }
+
+    private void removeInternal(TreeNode node, TreeNode pre) {
+        if (node.left == null && node.right == null) {
+            if (node == root) {
+                root = null;
+            } else if (node == pre.left) {
+                pre.left = null;
+            } else {
+                pre.right = null;
+            }
+        } else if (node.left != null && node.right == null) {
+            if (node == root) {
+                root = root.left;
+            } else if (node == pre.left) {
+                pre.left = node.left;
+            } else {
+                pre.right = node.left;
+            }
+        } else if (node.left == null && node.right != null) {
+            if (node == root) {
+                root = node.right;
+            } else if (node == pre.left) {
+                pre.left = node.right;
+            } else {
+                pre.right = node.right;
             }
         } else {
-
+            // 找左子树中最大的与要删除的结点的值进行替换
+            TreeNode parent = node;
+            TreeNode child = node.left;
+            // 一直往右走找最大的
+            while (child.right != null) {
+                parent = child;
+                child = child.right;
+            }
+            // 进行替换
+            node.val = child.val;
+            // 删除被替换的结点
+            if (parent == node) {
+                parent.left = child.left;
+            } else {
+                parent.right = child.left;
+            }
         }
-        return null;
     }
+
     // 4. 查找
     public TreeNode find(TreeNode root, char c) {
         TreeNode cur = root;
