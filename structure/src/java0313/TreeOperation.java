@@ -249,10 +249,10 @@ public class TreeOperation {
             return root;
         }
         if (right != null) {
-            return lowestCommonAncestor(root.right, p ,q);
+            return lowestCommonAncestor(right, p ,q);
         }
         if (left != null) {
-            return lowestCommonAncestor(root.left, p, q);
+            return lowestCommonAncestor(left, p, q);
         }
         return null;
     }
