@@ -15,9 +15,10 @@ public class Test {
         root.left.right = new TreeNode('C');
         BST bst = new BST();
         bst.insert('A');
-//        bst.insert('d');
         System.out.println(bst.remove('A'));
         System.out.println(bst.insert('0'));
+        System.out.println(bst.root);
+//        bst.insert('d');
 //        bst.inOrder(root);
 //        System.out.println(bst.head);
 //        System.out.println(bst.inOrder2(root));
@@ -25,6 +26,5 @@ public class Test {
 //        bst.inOrder(root);
 //        System.out.println(bst.head);
 //        System.out.println(bst.find(root, 'A').val);
-        System.out.println(bst.root);
     }
 }
