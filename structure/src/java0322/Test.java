@@ -9,10 +9,10 @@ import java.util.*;
  */
 public class Test {
     public static void main(String[] args) {
-//        int[] arr = {9, 3, 6, 2, 1, 5, 3};
-//        Sort sort = new Sort();
-//        sort.mergeSort(arr, 0, arr.length);
-//        System.out.println(Arrays.toString(arr));
+        int[] arr = {9, 3, 6, 2, 1, 5, 3};
+        Sort sort = new Sort();
+        sort.quickSort(arr, 0, arr.length);
+        System.out.println(Arrays.toString(arr));
 //        Set<Integer> set = new TreeSet<>();
 //        System.out.println(set.add(1));
 //        System.out.println(set.add(2));

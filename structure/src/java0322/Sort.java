@@ -101,18 +101,16 @@ public class Sort {
             return;
         }
         int key = start;
-        int i = start + 1;
+        int i = start;
         int j = end - 1;
-        while (i <= j) {
-            while (i <= j && arr[key] <= arr[j]) {
+        while (i < j) {
+            while (i < j && arr[key] <= arr[j]) {
                 j--;
             }
-            while (i <= j && arr[key] > arr[i]) {
+            while (i < j && arr[key] >= arr[i]) {
                 i++;
             }
-            if (i < j) {
                 swap(arr, i, j);
-            }
         }
         swap(arr, key, j);
         quickSort(arr, start, j);
