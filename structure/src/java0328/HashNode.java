@@ -5,12 +5,12 @@ package java0328;
  * @version 7.0
  * @date 2021/3/28 21:36
  */
-public class MapNode {
+public class HashNode {
     int key;
     int value;
-    MapNode next;
+    HashNode next;
 
-    public MapNode(int key, int value) {
+    public HashNode(int key, int value) {
         this.key = key;
         this.value = value;
     }
