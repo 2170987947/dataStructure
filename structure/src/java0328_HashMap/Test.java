@@ -1,4 +1,4 @@
-package java0328;
+package java0328_HashMap;
 
 /**
  * @author FMM
